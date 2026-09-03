@@ -1,0 +1,25 @@
+{
+  "build": "H\u00c4ZIL ARKS Cinema 10.1 TRUE 10/10",
+  "checks": {
+    "root_index": true,
+    "fan_api_hook": true,
+    "business_api_hook": true,
+    "video_title_hook": true,
+    "privacy_page": true,
+    "cinema_version_fixed": true,
+    "functions_present": true,
+    "js_syntax": true,
+    "internal_refs": true
+  },
+  "javascript": {
+    "assets/js/main-v10-20260820.js": "PASS",
+    "functions/api/fan-signup.js": "PASS",
+    "functions/api/business-inquiry.js": "PASS",
+    "functions/api/video-title.js": "PASS",
+    "functions/api/form-health.js": "PASS"
+  },
+  "internal_references_checked": 44,
+  "missing_internal_references": [],
+  "file_count": 28,
+  "result": "PASS"
+}

@@ -1,0 +1,78 @@
+HÄZIL ARKS — CINEMA 10.1 TRUE 10/10 DEPLOYMENT
+===================================================
+
+WHAT THIS BUILD FINISHES
+1. REAL FAN EMAIL CAPTURE
+   - Fan form now POSTs to /api/fan-signup.
+   - The Cloudflare Function creates/updates a real Resend Contact.
+   - Optional HAZIL_SEGMENT_ID places subscribers into a specific Resend Segment.
+   - Consent checkbox + privacy notice are included.
+   - Mail/Gmail fallback remains available only if the secure API is unavailable.
+
+2. REAL BOOKING / LICENSING / BUSINESS DELIVERY
+   - Business form now POSTs to /api/business-inquiry.
+   - The Cloudflare Function emails the complete inquiry to the HÄZIL business desk.
+   - Reply-To is set to the submitter's email.
+   - Honeypot spam fields are included.
+   - Mail/Gmail fallback remains available if the secure API is unavailable.
+
+3. REAL YOUTUBE VIDEO TITLES
+   - Generic FEATURE labels are now fallbacks only.
+   - /api/video-title reads the current public title from YouTube's official oEmbed endpoint.
+   - The live page replaces generic labels with the actual video title.
+   - KRUCIAL keeps its known title immediately.
+
+4. CLEANUP
+   - Footer now says CINEMA 10.1 instead of the stale CINEMA 7.0 label.
+   - Privacy page added.
+   - Form status messages and analytics events added.
+
+CLOUDFLARE PAGES ENVIRONMENT VARIABLES / SECRETS
+Required:
+- RESEND_API_KEY
+- HAZIL_FROM_EMAIL
+  Example format only: HÄZIL ARKS <website@YOUR-VERIFIED-DOMAIN.com>
+
+Recommended:
+- HAZIL_TO_EMAIL = hazilflix@gmail.com
+
+Optional:
+- HAZIL_SEGMENT_ID = your Resend Segment ID
+
+Compatibility:
+- FROM_EMAIL may be used instead of HAZIL_FROM_EMAIL.
+- FORM_TO_EMAIL may be used instead of HAZIL_TO_EMAIL.
+
+IMPORTANT
+The sender domain in HAZIL_FROM_EMAIL/FROM_EMAIL must be authorized for sending by your Resend account.
+No API keys or secrets are stored in this ZIP.
+
+DEPLOY
+1. Back up the current successful HÄZIL deployment.
+2. Extract this ZIP.
+3. Upload ALL CONTENTS directly to the HÄZIL Cloudflare Pages project root.
+4. Do not create an extra wrapper folder above index.html.
+5. Add the Cloudflare environment variables/secrets listed above.
+6. Deploy.
+7. Open the unique *.pages.dev deployment first.
+8. Test:
+   /api/form-health
+   Fan signup with your own test email
+   One business inquiry labeled TEST — PLEASE IGNORE
+   Cinema cards: wait a moment and verify actual YouTube titles replace fallback labels
+   privacy.html
+9. Confirm the fan appears in Resend Contacts.
+10. Confirm the business inquiry reaches hazilflix@gmail.com (or HAZIL_TO_EMAIL).
+11. Only after those tests pass, verify https://hazil.atechspot.com/.
+
+EXPECTED /api/form-health RESULT AFTER CONFIGURATION
+HTTP 200
+{
+  "ok": true,
+  "fan_signup": "configured",
+  "business_inquiry": "configured"
+}
+
+ROLLBACK
+If the new deployment fails, roll back to the previous successful Cloudflare Pages deployment.
+Do not change DNS merely to roll back front-end code.
