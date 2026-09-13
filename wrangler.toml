@@ -1,0 +1,17 @@
+name = "hazil-official"
+main = "worker.js"
+compatibility_date = "2026-09-13"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[[d1_databases]]
+binding = "HAZIL_DB"
+database_name = "hazil-signups"
+database_id = "PASTE_D1_DATABASE_ID_HERE"
+
+[vars]
+BOOKING_NOTIFY_EMAIL = "hazilflix@gmail.com"
+# Optional after verifying your sending domain:
+# RESEND_FROM_EMAIL = "HÄZIL Website <website@yourdomain.com>"
