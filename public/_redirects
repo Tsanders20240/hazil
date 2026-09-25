@@ -1,7 +1,12 @@
-/music /music.html 200
-/cinema /cinema.html 200
-/story /story.html 200
-/business /business.html 200
-/contact /contact.html 200
+/music / 302
+/music.html / 302
+/cinema / 302
+/cinema.html / 302
+/story / 302
+/story.html / 302
+/business / 302
+/business.html / 302
+/contact /#book 302
+/contact.html /#book 302
 /privacy /privacy.html 200
 /terms /terms.html 200
